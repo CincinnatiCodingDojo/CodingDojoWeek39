@@ -14,10 +14,16 @@
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  (cons (pop coll) (recursive-reverse (rest coll))))
+  (if (empty? coll) 
+    coll
+    (cons (last coll) (recursive-reverse (pop coll)))))
 
 (defn factorial [n]
-  __)
+  (loop [n n
+         acc 1]
+    (if (= n 1)
+      acc
+      (recur (dec n) (* acc n)))))
 
 (meditations
   "Recursion ends with a base case"
